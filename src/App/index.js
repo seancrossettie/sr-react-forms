@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
-import StudentForm from '../studentForm';
+import StudentForm from '../components/studentForm';
 import firebaseConfig from '../helpers/data/apiKeys';
 import './App.scss';
 
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className='App'>
-      <StudentForm />
+      <StudentForm formTitle='Add a Student'/>
     </div>
   );
 }
