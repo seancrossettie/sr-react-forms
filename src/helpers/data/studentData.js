@@ -13,4 +13,10 @@ const addStudent = (student) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default addStudent;
+const getStudents = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/students.json`)
+    .then((response) => resolve((Object.values(response.data))))
+    .catch((error) => reject(error));
+});
+
+export { addStudent, getStudents };
