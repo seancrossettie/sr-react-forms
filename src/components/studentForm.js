@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import addStudent from '../helpers/data/studentData';
+import { addStudent } from '../helpers/data/studentData';
 
 const StudentForm = ({ formTitle }) => {
   const [student, setStudent] = useState({
