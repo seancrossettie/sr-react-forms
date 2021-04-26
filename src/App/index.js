@@ -18,7 +18,10 @@ function App() {
 
   return (
     <div className='App'>
-      <StudentForm formTitle='Add a Student'/>
+      <StudentForm
+      formTitle='Add a Student'
+      setStudents={setStudents}
+      />
       <hr />
       {students.map((studentInfo) => (
         <StudentCard
