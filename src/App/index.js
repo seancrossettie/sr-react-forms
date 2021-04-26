@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
 import StudentCard from '../components/StudentCard';
-import StudentForm from '../components/studentForm';
+import StudentForm from '../components/StudentForm';
 import firebaseConfig from '../helpers/data/apiKeys';
 import { getStudents } from '../helpers/data/studentData';
 import './App.scss';
@@ -21,10 +21,13 @@ function App() {
       <StudentForm formTitle='Add a Student'/>
       <hr />
       {students.map((studentInfo) => (
-        <StudentCard key={studentInfo.firebaseKey}
+        <StudentCard
+          key={studentInfo.firebaseKey}
+          firebaseKey={studentInfo.firebaseKey}
           name={studentInfo.name}
           teacher={studentInfo.teacher}
           grade={Number(studentInfo.grade)}
+          setStudents={setStudents}
         />
       ))}
   </div>
