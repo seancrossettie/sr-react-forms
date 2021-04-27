@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function App() {
+export default function AddStudent() {
   return (
     <>
-    <h1>Hello World!</h1>
+    <h1></h1>
     </>
   );
 }
