@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Card,
@@ -7,6 +7,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { deleteStudent } from '../helpers/data/studentData';
+import StudentForm from './StudentForm';
 
 const StudentCard = ({
   firebaseKey,
@@ -15,9 +16,20 @@ const StudentCard = ({
   grade,
   setStudents
 }) => {
-  const handleClick = () => {
-    deleteStudent(firebaseKey)
-      .then((studentArray) => setStudents(studentArray));
+  const [editing, setEditing] = useState(false);
+
+  const handleClick = (type) => {
+    switch (type) {
+      case 'delete':
+        deleteStudent(firebaseKey)
+          .then((studentArray) => setStudents(studentArray));
+        break;
+      case 'edit':
+        setEditing((prevState) => !prevState);
+        break;
+      default:
+        console.warn('Nothing Selected');
+    }
   };
 
   return (
@@ -25,7 +37,16 @@ const StudentCard = ({
         <CardTitle tag="h5">Name: {name}</CardTitle>
         <CardText>Teacher: {teacher}</CardText>
         <CardText>Grade: {grade}</CardText>
-        <Button color='danger' onClick={handleClick}>Delete Student</Button>
+        <Button color='danger' onClick={() => handleClick('delete')}>Delete Student</Button>
+        <Button color='primary' onClick={() => handleClick('edit')}>{editing ? 'Close Form' : 'Edit Student'}</Button>
+        {editing && <StudentForm
+        formTitle='Edit Student'
+        setStudents={setStudents}
+        firebaseKey={firebaseKey}
+        name={name}
+        teacher={teacher}
+        grade={grade}
+        />}
     </Card>
   );
 };
