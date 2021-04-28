@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import FormGroup from '@material-ui/core/FormGroup';
 import { addStudent, updateStudent } from '../helpers/data/studentData';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 const StudentForm = ({
   formTitle,
@@ -16,6 +29,8 @@ const StudentForm = ({
     grade: grade || '',
     firebaseKey: firebaseKey || null
   });
+
+  const classes = useStyles();
 
   const handleInputChange = (e) => {
     setStudent((prevState) => ({
@@ -37,41 +52,14 @@ const StudentForm = ({
 
   return (
       <div className='student-form'>
-        <form
-        onSubmit={handleSubmit}
-        id='add-student-form'
-        autoComplete='off'
-        >
-        <h2>{formTitle}</h2>
-        <label>Name: </label>
-        <input
-          name='name'
-          type='text'
-          placeholder='Name'
-          value={student.name}
-          onChange={handleInputChange}
-          required
-        ></input>
-        <label>Teacher: </label>
-        <input
-          name='teacher'
-          type='text'
-          placeholder='Teacher'
-          value={student.teacher}
-          onChange={handleInputChange}
-          required
-          ></input>
-        <label>Grade: </label>
-        <input
-          name='grade'
-          type='number'
-          placeholder='Grade'
-          value={student.grade}
-          onChange={handleInputChange}
-          required
-        ></input>
-        <button type='submit'>Submit</button>
-        </form>
+        <FormGroup className={classes.root} onSubmit={handleSubmit} autoComplete='off'>
+          <h2>{formTitle}</h2>
+          <TextField name='name' type='text' label='Name' value={student.name} onChange={handleInputChange} required />
+          <TextField name='teacher' type='text' label='Teacher' value={student.teacher} onChange={handleInputChange} required />
+          <TextField name='grade' type='number' label='Grade' value={student.grade} onChange={handleInputChange} required />
+          <br />
+          <Button type='submit'>ADD A STUDENT</Button>
+        </FormGroup>
       </div>
   );
 };
