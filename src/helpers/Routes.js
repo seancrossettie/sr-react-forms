@@ -11,8 +11,7 @@ export default function Routes({ students, setStudents }) {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/students'
-        component={() => <Students students={students} setStudents={setStudents} />}
-        />
+        component={() => <Students students={students} setStudents={setStudents} />} />
         <Route exact path='/add-students/' component={() => <AddStudents setStudents={setStudents} />} />
       </Switch>
     </div>
