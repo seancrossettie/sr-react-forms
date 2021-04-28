@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StudentCard from '../components/StudentCard';
 import firebaseConfig from '../helpers/data/apiKeys';
+import '../styles/index.scss';
 
 firebase.initializeApp(firebaseConfig);
 

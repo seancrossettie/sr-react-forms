@@ -58,7 +58,7 @@ const StudentForm = ({
           <TextField name='teacher' type='text' label='Teacher' value={student.teacher} onChange={handleInputChange} required />
           <TextField name='grade' type='number' label='Grade' value={student.grade} onChange={handleInputChange} required />
           <br />
-          <Button type='submit'>ADD A STUDENT</Button>
+          <Button type='submit'>Submit</Button>
         </FormGroup>
       </div>
   );
