@@ -1,9 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import StudentForm from '../components/StudentForm';
 
-export default function AddStudent() {
+function AddStudents({ setStudents }) {
   return (
     <>
-    <h1></h1>
+      <StudentForm
+      formTitle='Add a Student'
+      setStudents={setStudents}
+      />
     </>
   );
 }
+
+AddStudents.propTypes = {
+  setStudents: PropTypes.func.isRequired
+};
+
+export default AddStudents;
