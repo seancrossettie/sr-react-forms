@@ -25,7 +25,7 @@ const NavBar = () => {
               <Link className="nav-link" to="/add-students/">Add Students</Link>
             </NavItem>
             <NavItem>
-              <Link className="nav-link" to="/students">Student Cards</Link>
+              <Link className="nav-link" to="/students/">Student Cards</Link>
             </NavItem>
           </Nav>
         </Collapse>

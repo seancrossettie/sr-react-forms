@@ -9,7 +9,6 @@ function AddStudents({ setStudents }) {
       <StudentForm
       formTitle='Add a Student'
       setStudents={setStudents}
-      className='d-flex'
       />
     </>
   );

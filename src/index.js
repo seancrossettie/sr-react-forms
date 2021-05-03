@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/index.scss';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import App from './App';
@@ -7,10 +8,12 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
+  <Router>
   <React.Fragment>
     <CssBaseline />
     <App />
-  </React.Fragment>,
+  </React.Fragment>
+  </Router>,
   document.getElementById('root')
 );
 
