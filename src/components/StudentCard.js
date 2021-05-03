@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
+import { Card } from '@material-ui/core';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -26,6 +27,7 @@ const StudentCard = ({
 }) => {
   const [editing, setEditing] = useState(false);
   const classes = useStyles();
+  const history = useHistory();
 
   const handleClick = (type) => {
     switch (type) {
@@ -36,13 +38,16 @@ const StudentCard = ({
       case 'edit':
         setEditing((prevState) => !prevState);
         break;
+      case 'view':
+        history.push(`/students/${firebaseKey}`);
+        break;
       default:
         console.warn('Nothing Selected');
     }
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} key={firebaseKey}>
       <CardActionArea>
         <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
@@ -59,6 +64,7 @@ const StudentCard = ({
       <CardActions>
         <ButtonGroup aria-label="outlined primary button group">
           <Button variant="contained" color="secondary" onClick={() => handleClick('delete')}>Delete Student</Button>
+          <Button variant="contained" color="primary" onClick={() => handleClick('view')}>View Student</Button>
           <Button variant="contained" color="primary" onClick={() => handleClick('edit')}>{editing ? 'Close Form' : 'Edit Student'}</Button>
         </ButtonGroup>
       </CardActions>
